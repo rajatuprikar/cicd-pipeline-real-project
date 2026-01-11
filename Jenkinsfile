@@ -30,7 +30,7 @@ pipeline {
 
         stage('Test Application') {
             steps {
-                sh 'mvn test'
+                sh 'mvn -f app/pom.xml clean package'
             }
         }
 
