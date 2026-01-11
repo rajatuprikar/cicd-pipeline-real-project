@@ -12,11 +12,14 @@ pipeline {
                 }
         }
 
-        stage("Checkout from SCM"){
-                steps {
-                    git branch: 'main', git credentialsId: 'github', url: 'https://github.com/rajatuprikar/cicd-pipeline-real-project.git'
-                }
-        }
+        stage('Checkout from SCM') {
+          steps {
+            git branch: 'main',
+               url: 'https://github.com/rajatuprikar/cicd-pipeline-real-project.git',
+                credentialsId: 'github'
+    }
+}
+
 
         stage("Build Application"){
             steps {
