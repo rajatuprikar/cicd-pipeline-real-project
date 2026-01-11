@@ -1,20 +1,26 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
 
-    <modelVersion>4.0.0</modelVersion> 
+    <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example.maven-project</groupId>
     <artifactId>maven-project</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging> <!-- single module -->
+    <packaging>jar</packaging>
+
     <name>Maven Project</name>
-    <description>Sample Maven project with a working, deployable site.</description>
+    <description>Sample Maven project with SonarQube enabled</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+
+        <!-- Sonar properties -->
+        <sonar.projectKey>maven-project</sonar.projectKey>
+        <sonar.projectName>maven-project</sonar.projectName>
     </properties>
 
     <dependencies>
@@ -24,6 +30,7 @@
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
@@ -34,7 +41,10 @@
 
     <build>
         <plugins>
+
+            <!-- Compiler -->
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.10.1</version>
                 <configuration>
@@ -43,11 +53,20 @@
                 </configuration>
             </plugin>
 
+            <!-- Unit Tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.1.2</version>
             </plugin>
+
+            <!-- ✅ SonarQube Maven Plugin -->
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.10.0.2594</version>
+            </plugin>
+
         </plugins>
     </build>
 
