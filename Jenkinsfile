@@ -2,9 +2,9 @@ pipeline {
     agent { label 'jenkins-agent' }
 
     tools {
-    jdk 'java17'
-    maven 'maven3'
-}
+        jdk 'java17'
+        maven 'maven3'
+    }
 
     stages {
 
@@ -24,7 +24,8 @@ pipeline {
 
         stage('Build Application') {
             steps {
-                 sh 'mvn -f register-app/pom.xml clean package'
+                sh 'ls -R'
+                sh 'mvn -f register-app/pom.xml clean package'
             }
         }
 
@@ -33,6 +34,5 @@ pipeline {
                 sh 'mvn -f register-app/pom.xml test'
             }
         }
-
     }
 }
