@@ -24,13 +24,13 @@ pipeline {
 
         stage('Build Application') {
             steps {
-                sh 'mvn clean package'
+                 sh 'mvn -f register-app/pom.xml clean package'
             }
         }
 
         stage('Test Application') {
             steps {
-                sh 'mvn -f app/pom.xml clean package'
+                sh 'mvn -f register-app/pom.xml test'
             }
         }
 
