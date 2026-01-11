@@ -22,17 +22,13 @@ pipeline {
             }
         }
 
-        stage('Build Application') {
-            steps {
-                sh 'ls -R'
-                sh 'mvn -f register-app/pom.xml clean package'
-            }
-        }
-
-        stage('Test Application') {
-            steps {
-                sh 'mvn -f register-app/pom.xml test'
-            }
-        }
+        stage("Build Application"){
+    steps {
+        sh "mvn clean package"
+    }
+}
+stage("Test Application"){
+    steps {
+        sh "mvn test"
     }
 }
