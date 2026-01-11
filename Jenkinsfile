@@ -14,7 +14,7 @@ pipeline {
 
         stage("Checkout from SCM"){
                 steps {
-                    git branch: 'main', credentialsId: 'github', url: https://github.com/rajatuprikar/cicd-pipeline-real-project.git'   
+                    git branch: 'main', git credentialsId: 'github', url: 'https://github.com/rajatuprikar/cicd-pipeline-real-project.git'
                 }
         }
 
